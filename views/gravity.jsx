@@ -88,7 +88,8 @@ class GravityPage extends React.Component{
                             </div>
                             <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                               <div className="card p-2">
-                                <p>Visit our Documation available on the <a href="#">GitHub Wiki</a></p>                                <p>View some of your introduction tutorials <a href="#">here</a></p>
+                                <p>Visit our Documation available on the <a href="#">GitHub Wiki</a></p>
+                                <p>View some of your introduction tutorials <a href="#">here</a></p>
                               </div>
                             </div>
                             <div className="tab-pane fade" id="next" role="tabpanel" aria-labelledby="next-tab">
