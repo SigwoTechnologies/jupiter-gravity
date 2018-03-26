@@ -28,11 +28,12 @@ export default class ApplicationLayout extends React.Component {
             </li>
             <li className="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tables">
               <a className="nav-link" href="/account">
-                <i className="fa fa-fw fa-table"></i>
+                <i className="fa fa-fw fa-address-card"></i>
                 <span className="nav-link-text"> Account</span>
               </a>
             </li>
-            {false && 'Generated plop links go here'}
+            <li className="nav-item"><a className="nav-link" href="/my_investments"><i className="fa fa-table fa-fw"></i> My Investments</a></li>
+    {false && 'Generated plop links go here'}
             <li className="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Dashboard">
               <a className="nav-link" href="/gravity">
                 <i className="fa fa-fw fa-question-circle"></i>
@@ -47,7 +48,7 @@ export default class ApplicationLayout extends React.Component {
             </li>
             <li className="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tables">
               <a className="nav-link" href="/gravity#contact-tab">
-                <i className="fa fa-fw fa-table"></i>
+                <i className="fa fa-fw fa-info"></i>
                 <span className="nav-link-text"> Contact Us</span>
               </a>
             </li>
