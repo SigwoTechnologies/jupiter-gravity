@@ -25,6 +25,7 @@ package-lock.json
 package-lock.json
 
 .env
+.env1
 .env2
 .gravity.js
 .eslintrc.js
