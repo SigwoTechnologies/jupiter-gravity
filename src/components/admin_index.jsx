@@ -39,6 +39,7 @@ class TableComponent extends React.Component {
       balance: 0,
       low_balance: true,
       show_passphrase: false,
+      expanded: false
     };
   }
 
@@ -49,6 +50,12 @@ class TableComponent extends React.Component {
   showPassphrase() {
     this.setState({
       show_passphrase: !this.state.show_passphrase,
+    });
+  }
+
+  expanded() {
+    this.setState({
+      expanded: !this.state.expanded,
     });
   }
 
@@ -81,22 +88,45 @@ class TableComponent extends React.Component {
     const { table } = state;
     const data = table[state.name];
     return (
-        <div className="container">
-            <h3>{this.state.name}</h3>
-            <div className="">
-                <p><strong>Address:</strong> {data.address}</p>
-                <p><strong>Passphrase:</strong> {state.show_passphrase
-                  ? <span>{data.passphrase} <button className="btn btn-danger" onClick={this.showPassphrase.bind(this)}>Hide</button></span>
-                  : <button className="btn btn-default" onClick={this.showPassphrase.bind(this)}>Show passphrase</button>
-                }</p>
-                <p><strong>Public Key:</strong> {data.public_key}</p>
-                <p><strong>Current balance: </strong>
-                  <span className={state.low_balance ? 'alert alert-warning' : 'alert alert-info'}>
-                    {state.balance / (10 ** 8)} JUP
-                  </span>
-                </p>
+        <div className="">
+          <div className="card">
+            <div className="card-header">
+              <div className="row mb-0">
+                <div className="col-3">
+                  <h6>{this.state.name}</h6>
+                </div>
+                <div className="col-3 col-xs-12">
+                  <h6>{this.state.balance}</h6>
+                </div>
+                <div className="col-3 col-xs-12">
+                  <h6 className="text-danger">Low Balance</h6>
+                </div>
+                <div className="col-3 col-xs-12 text-right">
+                  <button onClick={this.expanded.bind(this)} className="btn btn-info" type="button" data-toggle="collapse" data-target={"#heading" + this.state.name} aria-expanded="false" aria-controls={"heading" + this.state.name}>
+                    {this.state.expanded ? ' - ' : ' + '} more details
+                  </button>
+                </div>
+              </div>
             </div>
-            <hr />
+
+            <div id={"heading" + this.state.name} className="collapse">
+              <div className="card-body">
+                <div className="">
+                    <p><strong>Address:</strong> {data.address}</p>
+                    <p><strong>Passphrase:</strong> {state.show_passphrase
+                      ? <span>{data.passphrase} <button className="btn btn-danger" onClick={this.showPassphrase.bind(this)}>Hide</button></span>
+                      : <button className="btn btn-default" onClick={this.showPassphrase.bind(this)}>Show passphrase</button>
+                    }</p>
+                    <p><strong>Public Key:</strong> {data.public_key}</p>
+                    <p><strong>Current balance: </strong>
+                      <span className={state.low_balance ? 'alert alert-warning' : 'alert alert-info'}>
+                        {state.balance / (10 ** 8)} JUP
+                      </span>
+                    </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
     );
   }
@@ -213,38 +243,69 @@ class AdminComponent extends React.Component {
   render() {
     const { state } = this;
     const { props } = this;
-    const tableList = state.tables.map((table, index) => <TableComponent table={table} parent={this} key={`table-component-${index}`} />);
+    const tableList = state.tables.map((table, index) => 
+        <TableComponent table={table} parent={this} key={`table-component-${index}`} />
+    );
 
 
     return (
-        <div className="container-fluid">
-            <div className="text-center">
-                <h1>App Summary</h1>
-                <h2>Address: {props.user.record.account}</h2>
+        <div className="">
+          <div className="card p-4 my-3">
+            <div className="row">
+              <div className="col-12">
+                <h2 className="text-center my-4">App Summary</h2>
+              </div>
+              <div className="col-12 col-md-6 my-4">
+                <h4>App Address:</h4>
+                <span className="bg-warning rounded h4 p-1">{props.user.record.account}</span>
+              </div>
+              <div className="col-12 col-md-6 text-right my-auto">
                 <p>
                   <strong>Current balance: </strong>
                   {state.balances && state.balances.balance
-                    ? (state.balances.balance / (10 ** 8)) : 0} JUP
-                </p>
-                <p>
+                    ? (state.balances.balance / (10 ** 8)) : 0} JUP<br />
                   <strong>Required app balance: </strong>
                   {state.balances && state.balances.minAppBalanceAmount
                     ? (state.balances.minAppBalanceAmount / (10 ** 8)) : 0} JUP
                 </p>
+              </div>
             </div>
-            <hr />
-            <div className="container">
-                <h2 className="text-center">Tables</h2>
-                <p className="text-center">
-                  <strong>Required Table balance: </strong>
-                  {state.balances && state.balances.minTableBalanceAmount
-                    ? (state.balances.minTableBalanceAmount / (10 ** 8)) : 0} JUP
-                </p>
-                <hr />
-                { state.loading
-                  ? <p className="text-center alert alert-info">Loading</p> : tableList
-                }
+          </div>
+              
+          <div className="row">
+            <div className="col-12 col-md-10 mx-auto">
+              <div className="card mt-2 mb-5">
+                <div className="card-header">
+                    <h3>Current App Tables</h3>
+                    <h5>
+                      <strong>Required Table balance: </strong>
+                        {state.balances && state.balances.minTableBalanceAmount
+                          ? (state.balances.minTableBalanceAmount / (10 ** 8)) : 0} JUP
+                    </h5>
+                </div>
+                <div className="card-body">
+                  <div className="row">
+                    <div className="col-3 col-xs-12">
+                      <h5>Name</h5>
+                    </div>
+                    <div className="col-3 col-xs-12">
+                      <h5>Balance</h5>
+                    </div>
+                    <div className="col-3 col-xs-12">
+                      <h5>Notifications</h5>
+                    </div>
+                  </div>
+                  <div className="row">
+                      <div className="col-12">
+                        { state.loading
+                          ? <p className="text-center alert alert-info">Loading</p> : tableList
+                        }
+                      </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
     );
   }
