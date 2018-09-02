@@ -7,4 +7,3 @@ branches:
   - travisCI_test
 scripts:
   - npm install
-  - npm test
