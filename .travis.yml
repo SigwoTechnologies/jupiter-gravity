@@ -7,4 +7,4 @@ branches:
   only:
   - travisCI_test
 after_install:
-  - npm test
+  - npm start
