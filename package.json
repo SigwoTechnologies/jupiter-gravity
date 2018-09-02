@@ -1,11 +1,11 @@
 {
   "name": "gravity",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Gravity interacts directly with the Jupiter blockchain, encrypting and securing your information in individually permissible messaging data.",
   "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "node server.js",
+    "test": "Done, exiting now",
     "start": "webpack && node server.js",
     "gravity:db": "node -e \"require(process.env.PWD+'/config/gravity.js').gravity.loadTables('console');\"",
     "gravity:db:create": "node -e \"require(process.env.PWD+'/config/gravity.js').gravity.createAppDatabase();\"",
