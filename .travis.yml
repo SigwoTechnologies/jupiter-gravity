@@ -6,4 +6,5 @@ install: ./install-dev.sh
 branches:
   only:
   - travisCI_test
-npm test
+after_install:
+  - npm test
