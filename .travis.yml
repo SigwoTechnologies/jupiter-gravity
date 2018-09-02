@@ -2,9 +2,9 @@ language: node_js
 node_js:
   - lts/*
 os: ubuntu
-install: ./install-dev.sh
 branches:
   only:
   - travisCI_test
 scripts:
+  - npm install
   - npm test
