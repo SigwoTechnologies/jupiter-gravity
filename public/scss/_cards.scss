@@ -3,15 +3,14 @@
 .card-body-icon {
   position: absolute;
   z-index: 0;
-  top: -1.25rem;
-  right: -1rem;
-  opacity: 0.4;
+  top: -25px;
+  right: -25px;
 
   font-size: 5rem;
   @include rotate;
 }
 
-// Override breakpoints for card columns to work well with sidebar layout
+// Override breakpoints for card columns to work well with sidebar
 .card-columns {
   @media (min-width: 576px) {
     column-count: 1;
@@ -22,19 +21,4 @@
   @media (min-width: 1200px) {
     column-count: 2;
   }
-}
-
-.card-account {
-  color: $white;
-  a {
-    color: $white;
-  }
-  .card-body {
-    padding: 5%;
-    text-align: center;
-  }
-}
-
-.card-plain {
-  border: none;
 }

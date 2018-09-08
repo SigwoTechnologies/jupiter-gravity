@@ -1,16 +1,25 @@
 import React from 'react';
-import ApplicationLayout from './layout/application.jsx';
+import ReactDom from 'react-dom';
 
-class UserListPage extends React.Component {
-  render() {
-    return (
-        <ApplicationLayout data={this.props}>
-            <h1 className="text-center">User List</h1>
-            <div id="UserListComponent">
-            </div>
-        </ApplicationLayout>
-    );
-  }
-}
+import ApplicationLayout from './layout/application';
 
-module.exports = UserListPage;
+class UserListPage extends React.Component{
+    constructor(props){
+        super(props);
+    }
+
+
+    render(){
+        return(
+            <ApplicationLayout data={this.props}>
+                <h1 className="text-center">User List</h1>
+
+                <div id="UserListComponent">
+
+                </div>
+            </ApplicationLayout>
+        )
+    }
+};
+
+module.exports= UserListPage;
