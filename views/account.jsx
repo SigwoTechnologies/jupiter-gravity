@@ -1,16 +1,23 @@
 import React from 'react';
-import ApplicationLayout from './layout/application.jsx';
+import ReactDom from 'react-dom';
 
-class AccountPage extends React.Component {
-  render() {
-    return (
-        <ApplicationLayout data={this.props}>
-            <div id="account-section">
+import ApplicationLayout from './layout/application';
 
-            </div>
-        </ApplicationLayout>
-    );
-  }
-}
+class AccountPage extends React.Component{
+    constructor(props){
+        super(props);
+    }
 
-module.exports = AccountPage;
+
+    render(){
+        return(
+            <ApplicationLayout data={this.props}>
+                <div id="account-section">
+
+                </div>
+            </ApplicationLayout>
+        )
+    }
+};
+
+module.exports= AccountPage;

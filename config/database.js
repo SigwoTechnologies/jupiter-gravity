@@ -1,3 +1,3 @@
 module.exports = {
-  url: 'mongodb://localhost/gravity_data',
-};
+    'url': 'mongodb://localhost/sigvest_tracker'
+}

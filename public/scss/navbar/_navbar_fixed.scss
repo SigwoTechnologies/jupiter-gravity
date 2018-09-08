@@ -29,10 +29,10 @@
   }
   &.navbar-dark {
     .sidenav-toggler {
-      background-color: transparent;
+      background-color: $gray-900;
       a {
         i {
-          color: $gray-500;
+          color: $gray-500;;
         }
       }
     }

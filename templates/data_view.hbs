@@ -1,18 +1,25 @@
 import React from 'react';
-import ApplicationLayout from './layout/application.jsx';
+import ReactDom from 'react-dom';
 
-class {{page_name}}Page extends React.Component {
-  render() {
-    return (
-        <ApplicationLayout data={this.props}>
-            <h1 className="text-center">{{original_name}}</h1>
+import ApplicationLayout from './layout/application';
 
-            <div id="{{page_name}}Component">
+class {{page_name}}Page extends React.Component{
+    constructor(props){
+        super(props);
+    }
 
-            </div>
-        </ApplicationLayout>
-    );
-  }
-}
 
-module.exports = {{page_name}}Page;
+    render(){
+        return(
+            <ApplicationLayout data={this.props}>
+                <h1 className="text-center">{{original_name}}</h1>
+
+                <div id="{{page_name}}Component">
+
+                </div>
+            </ApplicationLayout>
+        )
+    }
+};
+
+module.exports= {{page_name}}Page;
